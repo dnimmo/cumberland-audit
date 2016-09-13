@@ -6,7 +6,6 @@ const cumberland = appName => {
 
   const record = data => {
     const {action, user} = data
-    // handle hyphens in action
 
     MongoClient.connect(dbUrl, (err, db) => {
       if (err) console.log(err)
