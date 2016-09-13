@@ -10,7 +10,7 @@ test('Should be able to record data', t => {
 test('Should be able to retrieve data', t => {
   record({action: 'test', user: 'test-user-2'})
   record({action: 'test', user: 'test-user-2'})
-  const results = retrieve(user: 'test-user-2')
+  const results = retrieve({user: 'test-user-2'})
 
   t.equal(results.length, 2)
   t.end()
