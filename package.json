@@ -1,0 +1,23 @@
+{
+  "name": "cumberland-audit",
+  "version": "1.0.0",
+  "description": "An auditing module for all your sausage auditing needs",
+  "main": "cumberland.js",
+  "scripts": {
+    "test": "tape test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamiepreston/cumberland-audit.git"
+  },
+  "keywords": [
+    "auditing",
+    "sausages"
+  ],
+  "author": "Jamie Preston <jamie.preston@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamiepreston/cumberland-audit/issues"
+  },
+  "homepage": "https://github.com/jamiepreston/cumberland-audit#readme"
+}
