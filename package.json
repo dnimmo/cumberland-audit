@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/jamiepreston/cumberland-audit/issues"
   },
-  "homepage": "https://github.com/jamiepreston/cumberland-audit#readme"
+  "homepage": "https://github.com/jamiepreston/cumberland-audit#readme",
+  "devDependencies": {
+    "standard": "^8.0.0",
+    "tape": "^4.6.0"
+  }
 }
