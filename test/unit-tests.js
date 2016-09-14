@@ -26,7 +26,7 @@ test('Should be able to record data', t => {
 test('Should be able to retrieve data', t => {
   cumberland.fill({action: testAction, user: 'test-user-2'})
   cumberland.fill({action: testAction, user: 'test-user-2'})
-  cumberland.chomp({action: testAction}, {}, results => {
+  cumberland.chomp({action: testAction}, results => {
     t.equal(results.length, 2)
     tearDown()
     t.end()
@@ -36,7 +36,7 @@ test('Should be able to retrieve data', t => {
 test('Should be able to retrieve specific data', t => {
   cumberland.fill({action: testAction, user: 'test-user'})
   cumberland.fill({action: testAction, user: 'test-user-2'})
-  cumberland.chomp({action: testAction}, {user: 'test-user'}, results => {
+  cumberland.chomp({action: testAction, query: {user: 'test-user'}}, results => {
     t.equal(results.length, 1)
     tearDown()
     t.end()
