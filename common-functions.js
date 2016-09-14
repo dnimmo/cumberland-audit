@@ -30,7 +30,7 @@ const getDate = () => {
   return `${year}_${month}_${day}`
 }
 
-module.exports {
+module.exports = {
   generateTimestamp,
   getDate
 }

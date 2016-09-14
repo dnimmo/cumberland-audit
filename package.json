@@ -14,7 +14,8 @@
     "auditing",
     "sausages"
   ],
-  "author": "Jamie Preston <jamie.preston@gmail.com>",
+  "author": "Team SIAC",
+  "contributors": ["Jamie Preston <jamie.preston@gmail.com>", "David Nimmo <dnimmo@gmail.com>", "Nick Holvast <nick.holvast@hotmail.com>"],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jamiepreston/cumberland-audit/issues"
