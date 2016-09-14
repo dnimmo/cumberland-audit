@@ -1,8 +1,7 @@
 const { MongoClient } = require('mongodb')
 const { generateTimestamp } = require('./common-functions')
 
-const cumberland = appName => {
-  const dbUrl = `mongodb://0.0.0.0:27017/${appName}`
+const cumberland = dbUrl => {
 
   const fill = (data = {action: 'unknown', user: 'unknown'}) => {
     const {action, user} = data
