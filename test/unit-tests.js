@@ -3,7 +3,7 @@ const testAppName = 'cumberland-test'
 const dbUrl = `mongodb://0.0.0.0:27017/${testAppName}`
 const cumberland = require('../cumberland')(dbUrl)
 const { MongoClient } = require('mongodb')
-const testAction = 'test'
+const testAction = 'unit-test'
 
 const tearDown = () => {
   MongoClient.connect(dbUrl, (err, db) => {

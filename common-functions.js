@@ -30,7 +30,10 @@ const getDate = () => {
   return `${year}_${month}_${day}`
 }
 
+const sanitise = param => param.replace(/[^a-zA-Z0-9]/g, '')
+
 module.exports = {
   generateTimestamp,
-  getDate
+  getDate,
+  sanitise
 }
