@@ -14,7 +14,7 @@ const tearDown = () => {
 }
 
 test('Should be able to record data', t => {
-  const result = cumberland.encase({action: testAction, user: 'test-user'})
+  const result = cumberland.fill({action: testAction, user: 'test-user'})
 
   t.equal(result.user, 'test-user')
   tearDown()
@@ -22,9 +22,9 @@ test('Should be able to record data', t => {
 })
 
 test('Should be able to retrieve data', t => {
-  cumberland.encase({action: testAction, user: 'test-user-2'})
-  cumberland.encase({action: testAction, user: 'test-user-2'})
-  cumberland.unwrap({action: testAction}, results => {
+  cumberland.fill({action: testAction, user: 'test-user-2'})
+  cumberland.fill({action: testAction, user: 'test-user-2'})
+  cumberland.chomp({action: testAction}, results => {
     t.equal(results.length, 2)
     tearDown()
     t.end()
