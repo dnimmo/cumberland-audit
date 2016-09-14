@@ -4,7 +4,7 @@ const { generateTimestamp } = require('./common-functions')
 const cumberland = appName => {
   const dbUrl = `mongodb://0.0.0.0:27017/${appName}`
 
-  const encase = data => {
+  const fill = (data = {action: 'unknown', user: 'unknown'}) => {
     const {action, user} = data
 
     MongoClient.connect(dbUrl, (err, db) => {
@@ -17,10 +17,11 @@ const cumberland = appName => {
 
       db.close()
     })
+
     return data
   }
 
-  const unwrap = (data, callback) => {
+  const chomp = (data = {action: 'unknown', user: 'unknown'}, callback = data => console.log(data)) => {
     const {action} = data
     MongoClient.connect(dbUrl, (err, db) => {
       if (err) console.log(err)
@@ -31,8 +32,8 @@ const cumberland = appName => {
   }
 
   return {
-    encase,
-    unwrap
+    fill,
+    chomp
   }
 }
 
