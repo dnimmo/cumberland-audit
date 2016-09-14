@@ -1,8 +1,8 @@
 const test = require('tape')
 const testAppName = 'cumberland-test'
-const cumberland = require('../cumberland')(testAppName)
-const { MongoClient } = require('mongodb')
 const dbUrl = `mongodb://0.0.0.0:27017/${testAppName}`
+const cumberland = require('../cumberland')(dbUrl)
+const { MongoClient } = require('mongodb')
 const testAction = 'test'
 
 const tearDown = () => {
