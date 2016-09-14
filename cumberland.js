@@ -1,18 +1,16 @@
 const { MongoClient } = require('mongodb')
-const { generateTimestamp, sanitise } = require('./common-functions')
+const { getTime, getDate, sanitise } = require('./common-functions')
 
 const cumberland = dbUrl => {
   const fill = (data = {action: 'unknown', user: 'unknown'}) => {
-    const {action, user} = data
+    const {action} = data
     const sanitisedAction = sanitise(action)
+    const dataToInsert = Object.assign(data, {date: getDate(), time: getTime()})
 
     MongoClient.connect(dbUrl, (err, db) => {
       if (err) console.log(err)
       const collection = db.collection(sanitisedAction)
-      collection.insert({
-        user,
-        timestamp: generateTimestamp()
-      })
+      collection.insert(dataToInsert)
 
       db.close()
     })
@@ -28,6 +26,7 @@ const cumberland = dbUrl => {
       if (err) console.log(err)
       const collection = db.collection(sanitisedAction)
       collection.find(query).toArray((err, docs) => err ? console.log(err) : callback(docs))
+
       db.close()
     })
   }
