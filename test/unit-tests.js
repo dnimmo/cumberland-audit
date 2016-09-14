@@ -1,7 +1,7 @@
 const test = require('tape')
 const { sanitise } = require('../common-functions')
 const testAppName = 'cumberland-test'
-const dbUrl = `mongodb://0.0.0.0:27017/${testAppName}`
+const dbUrl = `mongodb://localhost:27017/${testAppName}`
 const cumberland = require('../cumberland')(dbUrl)
 const { MongoClient } = require('mongodb')
 const testAction = 'unit-test'
