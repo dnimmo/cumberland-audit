@@ -20,8 +20,8 @@ const cumberland = dbUrl => {
     return data
   }
 
-  const chomp = (data = {action: 'unknown', user: 'unknown'}, query = {}, callback = data => console.log(data)) => {
-    const {action} = data
+  const chomp = (data = {action: 'unknown', query: {}}, callback = data => console.log(data)) => {
+    const {action, query} = data
     const sanitisedAction = sanitise(action)
 
     MongoClient.connect(dbUrl, (err, db) => {
