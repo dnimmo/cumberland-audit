@@ -12,7 +12,7 @@ const dbUrl = `mongodb://localhost:27017/cumberland-test`
 const dbName = 'test-database'
 const cumberland = require('../cumberland')(dbUrl, dbName)
 ```
-You can have multiple dbNames on the same db to allow for testing.  They will be handles as separate MongoDB collections.
+You can have multiple dbNames on the same db to allow for testing.  They will be handled as separate MongoDB collections.
 
 ## Usage
 cumberland-audit has two functions, `fill` and `chomp`:
@@ -32,7 +32,22 @@ const options = {action: 'login', query: {user: 'test-user-1'}}
 cumberland.chomp(options, function(results) { ... })
 ```
 *Parameters:*
-- *options*
-- *action (String)(required)*: The system action to search for
-- *query (Object)(optional)*
-- *user*: User identifier to search for
+*options*
+- *action (String)(optional)*: The system action to search for
+- *user (String)(optional)*: User identifier to search for
+- *{custom}*: Search using the custom variables you defined in `cumberland.fill()`
+*callback*
+A function to be performed on the results once the asynchronous chomp request has completed.  The data will be available as an array of objects, as specified below:
+
+```
+[ { _id: 57da6979c50cf73df4d75fae,
+    action: 'unit-test',
+    user: 'test-user',
+    date: '2016/09/15',
+    time: '10:27:21' },
+  { _id: 57da69d9c8fd2039d0823b01,
+    action: 'unit-test',
+    user: 'test-user',
+    date: '2016/09/15',
+    time: '10:28:57' } ]
+```
