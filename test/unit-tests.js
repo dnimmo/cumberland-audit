@@ -2,14 +2,15 @@ const test = require('tape')
 const { sanitise } = require('../common-functions')
 const testAppName = 'cumberland-test'
 const dbUrl = `mongodb://localhost:27017/${testAppName}`
-const cumberland = require('../cumberland')(dbUrl)
+const dbName = 'test-database'
+const cumberland = require('../cumberland')(dbUrl, dbName)
 const { MongoClient } = require('mongodb')
 const testAction = 'unit-test'
 
 const tearDown = () => {
   MongoClient.connect(dbUrl, (err, db) => {
     if (err) console.log(err)
-    db.collection(sanitise(testAction)).remove({})
+    db.collection(sanitise(dbName)).remove({})
     db.close()
   })
 }
@@ -36,7 +37,17 @@ test('Should be able to retrieve data', t => {
 test('Should be able to retrieve specific data', t => {
   cumberland.fill({action: testAction, user: 'test-user'})
   cumberland.fill({action: testAction, user: 'test-user-2'})
-  cumberland.chomp({action: testAction, query: {user: 'test-user'}}, results => {
+  cumberland.chomp({action: testAction, user: 'test-user'}, results => {
+    t.equal(results.length, 1)
+    tearDown()
+    t.end()
+  })
+})
+
+test('Should be able to retrieve user specific data', t => {
+  cumberland.fill({action: testAction, user: 'test-user'})
+  cumberland.fill({action: testAction, user: 'test-user-2'})
+  cumberland.chomp({user: 'test-user'}, results => {
     t.equal(results.length, 1)
     tearDown()
     t.end()

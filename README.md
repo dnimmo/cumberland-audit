@@ -6,11 +6,13 @@ npm install cumberland-audit
 
 ## Dependencies
 You will need a MongoDB service running on the environment you are using cumberland-audit from.  Setup instructions can be found on the MongoDB website:  https://docs.mongodb.com/manual/administration/install-community/
-Once you have a MongoDB location, this must be passed in to cumberland-audit when initializing:
+Once you have a MongoDB location, this must be passed in to cumberland-audit when initializing, along with a database name:
 ```
 const dbUrl = `mongodb://localhost:27017/cumberland-test`
-const cumberland = require('../cumberland')(dbUrl)
+const dbName = 'test-database'
+const cumberland = require('../cumberland')(dbUrl, dbName)
 ```
+You can have multiple dbNames on the same db to allow for testing.  They will be handles as separate MongoDB collections.
 
 ## Usage
 cumberland-audit has two functions, `fill` and `chomp`:
